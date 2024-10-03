@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fc;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(45deg, #1e272e, #34495e);
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar h3 {
+            color: #f5f6fa;
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: #f5f6fa;
+            font-size: 16px;
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background: #00a8ff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dropdown Menu with unique style */
+        .sidebar .dropdown-content {
+            display: none;
+            background-color: #34495e;
+            border-left: 3px solid #00a8ff; /* Unique blue border for dropdown */
+            border-radius: 8px;
+            padding-left: 15px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1); /* Unique shadow */
+        }
+
+        .sidebar .dropdown-content a {
+            padding: 8px 0;
+            display: block;
+            color: #dcdde1;
+            transition: all 0.3s;
+        }
+
+        .sidebar .dropdown-content a:hover {
+            background-color: #00a8ff;
+            color: #fff;
+        }
+
+        .sidebar li:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 270px;
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        /* Profile Image in Top-Right Corner */
+        .profile-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .profile-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profile-container .dropdown {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .profile-container .dropdown span {
+            color: #34495e;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .profile-container .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #34495e;
+            min-width: 150px;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .profile-container .dropdown-content a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .profile-container .dropdown-content a:hover {
+            background-color: #00a8ff;
+        }
+
+        /* Dashboard Cards - Flexbox layout for single line display */
+        .dashboard-cards {
+            display: flex;
+            gap: 20px; /* Adjust the spacing between the cards */
+            justify-content: space-around;
+        }
+
+        .dashboard-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;  /* Set card width to make them rectangular */
+            height: 150px;  /* Set height to ensure rectangular shape */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .dashboard-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dashboard-card small {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+        }
+
+        /* Card Colors */
+        .users {
+            background-color: #6f42c1;
+            color: #fff;
+        }
+
+        .income {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .conversion-rate {
+            background-color: #fd7e14;
+            color: #fff;
+        }
+
+        .sessions {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Side Navbar -->
+    <div class="sidebar">
+        <h3>ONECAUSE</h3>
+        <ul>
+            <li><a href="#">Home</a></li>
+
+            <!-- Donors Dropdown -->
+            <li class="dropdown">
+                <a href="#">Donors</a>
+                <div class="dropdown-content">
+                    <a href="login.html">Add Donor</a>
+                    <a href="#">View All Donors</a>
+                    <a href="#">Update Donor</a>
+                    <a href="#">Delete Donor</a>
+                </div>
+            </li>
+
+            <!-- Recipients Dropdown -->
+            <li class="dropdown">
+                <a href="#">Recipients</a>
+                <div class="dropdown-content">
+                    <a href="#">Add Recipient</a>
+                    <a href="#">View All Recipients</a>
+                    <a href="#">Update Recipient</a>
+                    <a href="#">Delete Recipient</a>
+                </div>
+            </li>
+
+            <li><a href="#">Manage Drives</a></li>
+            <li><a href="#">Logistics</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Profile Picture and Admin Name in Top-Right Corner -->
+        <div class="profile-container">
+            <img src="profile.png" alt="Profile Picture">
+            <div class="dropdown">
+                <span>Welcome, Admin!!</span>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="#">Log out</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard-cards">
+            <div class="dashboard-card users">
+                <small>Users</small>
+                <h3>Number of Users</h3>
+                <p>123</p>
+            </div>
+            <div class="dashboard-card income">
+                <small>Income</small>
+                <h3>Total Income</h3>
+                <p>$4,500</p>
+            </div>
+            <div class="dashboard-card conversion-rate">
+                <small>Conversion</small>
+                <h3>Conversion Rate</h3>
+                <p>65%</p>
+            </div>
+            <div class="dashboard-card sessions">
+                <small>Sessions</small>
+                <h3>Total Sessions</h3>
+                <p>240</p>
+            </div>
+        </div>
+
+    <script>
+        // Dropdown toggle function for profile menu
+        document.querySelector('.profile-container .dropdown').addEventListener('click', function() {
+            const dropdownContent = this.querySelector('.dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown span')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
